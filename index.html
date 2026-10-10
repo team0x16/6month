@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Дерево Душ - 6 Месяцев</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <!-- Строгий UI (До начала) -->
+    <div id="intro-ui" class="overlay">
+        <div class="intro-content" style="max-width: 600px; text-align: left;">
+            <h1 class="title" style="margin-bottom: 25px; text-align: center; font-size: 2.8rem;">Вика,</h1>
+            <p class="subtitle" style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 15px; color: rgba(255,255,255,0.9);">
+                Ровно полгода назад, 5 апреля, началось то, что навсегда изменило мою жизнь. Между нами 1111 километров, но я никогда не чувствовал кого-то настолько близко к себе.
+            </p>
+            <p class="subtitle" style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 15px; color: rgba(255,255,255,0.9);">
+                Всё, что ты видишь дальше — это наше собственное Дерево Душ. Каждая его ветвь и каждая светящаяся звезда — это мои мысли о тебе, наши ночные звонки и мечты о нашей первой встрече.
+            </p>
+            <p class="subtitle" style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 35px; color: rgba(255,255,255,0.9); font-style: italic;">
+                С днем нашего полугодия.
+            </p>
+            <div style="text-align: center;">
+                <button id="start-btn" class="apple-btn">Пробудить Дерево</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- UI управления навигацией -->
+    <div id="navigation-ui" class="overlay hidden" style="justify-content: flex-end; padding-bottom: 40px; pointer-events: none;">
+        <div style="display: flex; gap: 15px; pointer-events: auto;">
+            <button id="prev-node-btn" class="apple-btn small" style="background: rgba(255,255,255,0.1);">Назад</button>
+            <button id="next-node-btn" class="apple-btn small">Следующее воспоминание</button>
+        </div>
+    </div>
+
+    <!-- Финальный экран (Оутро) -->
+    <div id="outro-ui" class="overlay hidden" style="opacity: 0;">
+        <div class="intro-content" style="max-width: 600px; text-align: center; background: transparent; border: none; backdrop-filter: none;">
+            <h1 class="title" style="font-size: 3.5rem; margin-bottom: 20px; text-shadow: 0 0 20px rgba(255, 20, 147, 0.5);">Я люблю тебя.</h1>
+            <p class="subtitle" style="font-size: 1.5rem; color: rgba(255,255,255,0.9);">С полугодием, Вика.</p>
+        </div>
+    </div>
+
+    <!-- Модалка для текста -->
+    <div id="message-modal" class="message-modal">
+        <p id="message-text" class="message-text"></p>
+        <button id="close-message-btn" class="apple-btn small">Спрятать</button>
+    </div>
+
+    <script src="main.js?v=19"></script>
+</body>
+</html>
