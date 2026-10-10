@@ -49,6 +49,9 @@ class TreeOfSouls {
         this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
         this.controls.enableDamping = true;
         this.controls.dampingFactor = 0.05;
+        this.controls.enabled = false; // Отключаем до нажатия кнопки "Пробудить"
+        
+        this.hasStarted = false; // Флаг старта
         this.controls.maxDistance = 1500;
         this.controls.minDistance = 10;
         this.controls.target.set(0, 80, 0); // Центр вращения — середина дерева
@@ -294,7 +297,7 @@ class TreeOfSouls {
 
         // Рейкастинг для клика по плодам
         window.addEventListener('click', (event) => {
-            if (!this.controls.enabled) return; // Игнорим до старта
+            if (!this.isReady) return; // Полностью игнорируем любые клики, пока не закончилась стартовая анимация
             if (event.target.tagName === 'BUTTON' || event.target.closest('.overlay')) return;
             if (document.getElementById('message-modal').classList.contains('active')) return;
 
@@ -320,6 +323,7 @@ class TreeOfSouls {
         
         // Включаем ручное управление
         this.controls.enabled = true;
+        this.hasStarted = true;
         
         // Плавное появление самого дерева (из невидимости)
         gsap.to(this.particleMat, { opacity: 0.8, duration: 4, ease: "power2.inOut" });
@@ -340,6 +344,7 @@ class TreeOfSouls {
             ease: "power2.inOut",
             onComplete: () => {
                 document.getElementById('navigation-ui').classList.remove('hidden');
+                this.isReady = true; // Теперь можно кликать!
             }
         });
     }

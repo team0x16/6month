@@ -52,7 +52,10 @@ body {
 
 .overlay.hidden {
     opacity: 0;
-    pointer-events: none;
+    pointer-events: none !important;
+}
+.overlay.hidden * {
+    pointer-events: none !important;
 }
 
 .intro-content {
@@ -76,10 +79,10 @@ body {
 
 .subtitle {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem; /* Чуть крупнее */
     color: var(--text-secondary);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em; /* Нормальный кернинг */
+    line-height: 1.6; /* Комфортный интерлиньяж */
 }
 
 /* Apple-style strict button */
